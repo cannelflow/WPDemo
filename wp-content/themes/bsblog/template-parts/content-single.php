@@ -8,7 +8,22 @@
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                     <div class="site-heading">
                         <h1><?php the_title() ; ?></h1>
-                        <p class="post-meta">Posted by <?php the_author_posts_link(); ?> on <?php the_time('F j, Y'); ?></p>
+                        <p class="post-meta">
+                            Posted by <?php the_author_posts_link(); ?> 
+                            on <?php the_time('F j, Y'); ?>
+                            Category <?php if(has_category()) {
+                                        the_category(', ');
+                                      } else {
+                                       echo("No Category Found!!");
+                                        }
+                              ?>
+                              <?php if(has_tag()) {
+                                        the_tags();
+                                      } else {
+                                       echo("No Tags Found!!");
+                                        }
+                              ?>
+                        </p>
                     </div>
                 </div>
             </div>
@@ -18,15 +33,15 @@
     <!-- Main Content -->
     <div class="container">
         <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="col-md-8 article">
                 
                   <div class="blog-content">
-                        <h3 class="post-subtitle">
+                        <p class="post-subtitle">
                              <?php 
                                 $content = get_the_content();
                                 echo $content ;
                             ?>
-                        </h3>
+                        <p>
                     </div>
                 
                 
@@ -34,6 +49,17 @@
                      <?php get_template_part('template-parts/content-nav', get_post_format()) ; ?>
                 </div>
                 
+                <div class="blog-comment">
+                    
+                    <?php comments_template() ; ?>
+                </div>
+                
+            </div>
+            <div class="col-md-4 sidebar">
+                 <?php if(is_active_sidebar('sidebar')) : ?>
+					<?php dynamic_sidebar('sidebar'); ?>
+			 <?php endif; ?>
+    	    
             </div>
         </div>
     </div>

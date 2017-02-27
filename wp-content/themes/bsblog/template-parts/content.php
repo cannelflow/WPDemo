@@ -11,6 +11,21 @@
                             ?>
                         </h3>
                     </div>
-                    <p class="post-meta">Posted by <?php the_author_posts_link(); ?> on <?php the_time('F j, Y'); ?></p>
+                    <p class="post-meta">
+                        Posted by <?php the_author_posts_link(); ?> 
+                        on <?php the_time('F j, Y'); ?>
+                        Category <?php if(has_category()) {
+                                        the_category(', ');
+                                      } else {
+                                       echo("No Category Found!!");
+                                        }
+                              ?>
+                              <?php if(has_tag()) {
+                                        the_tags();
+                                      } else {
+                                       echo("No Tags Found!!");
+                                        }
+                              ?>
+                    </p>
 </div>
 <hr>

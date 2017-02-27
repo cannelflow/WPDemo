@@ -100,7 +100,7 @@ function bsblog_customize_register( $wp_customize ) {
     
 //add control to section Header
   $wp_customize->add_control(new WP_Customize_Control($wp_customize,'github_link_textbox',array(
-		'label' => __( 'New  Link', 'bsblog' ),
+		'label' => __( 'New Github Link', 'bsblog' ),
 		'section' => 'blog_footer',
 		'settings' => 'github_link',
         
